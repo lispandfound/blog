@@ -1,39 +1,36 @@
-name: Deploy Hakyll website to GitHub Pages
+name: Build and Deploy Hakyll Site
 
 on:
   push:
-    branches: ["main"]
-  workflow_dispatch:
-
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-concurrency:
-  group: "pages"
-  cancel-in-progress: true
+    branches:
+      - main  # Change this to your main branch name
+  pull_request:
+    branches:
+      - main  # Change this to your main branch name
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-      - name: Setup Pages
-        uses: actions/configure-pages@v2
-      - name: Build with Hakyll
-        uses: stephenswat/hakyll-build-pages@v1.0.7
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v1
 
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    needs: build
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Install Cabal
+        run: sudo apt-get update && sudo apt-get install -y cabal-install
+
+      - name: Install GHC
+        run: sudo apt-get update && sudo apt-get install -y ghc
+
+      - name: Build Hakyll site
+        run: |
+          cabal update
+
+          # Replace 'build' with the command to build your Hakyll site
+          cabal run site build
+
       - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v1
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: _site
