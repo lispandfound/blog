@@ -2,6 +2,10 @@
 title: S.P.Q.R.
 ---
 
+Here is a MathML formula: 
+
+$$\vec{F}_\text{net}=\frac{d\vec{p}}{dt}$$
+
 Mauris in lorem nisl. Maecenas tempus facilisis ante, eget viverra nisl
 tincidunt et. Donec turpis lectus, mattis ac malesuada a, accumsan eu libero.
 Morbi condimentum, tortor et tincidunt ullamcorper, sem quam pretium nulla, id

@@ -1,8 +1,15 @@
 --------------------------------------------------------------------------------
 {-# LANGUAGE OverloadedStrings #-}
 import           Data.Monoid (mappend)
-import           Hakyll
+import           Hakyll hiding (pandocCompiler)
+import           Text.Pandoc.Options
 
+
+pandocOptions :: WriterOptions
+pandocOptions = defaultHakyllWriterOptions { writerHTMLMathMethod = MathML }
+
+pandocCompiler :: Compiler (Item String)
+pandocCompiler = pandocCompilerWith defaultHakyllReaderOptions pandocOptions
 
 --------------------------------------------------------------------------------
 main :: IO ()
