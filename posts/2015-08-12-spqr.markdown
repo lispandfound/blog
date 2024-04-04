@@ -6,6 +6,10 @@ Here is a MathML formula:
 
 $$\vec{F}_\text{net}=\frac{d\vec{p}}{dt}$$
 
+Some more complicated equation:
+
+$$\int_{0}^{2\pi} (u'(x))^2 dx \leq \int_{0}^{2\pi} (u(x))^2 dx.$$
+
 Mauris in lorem nisl. Maecenas tempus facilisis ante, eget viverra nisl
 tincidunt et. Donec turpis lectus, mattis ac malesuada a, accumsan eu libero.
 Morbi condimentum, tortor et tincidunt ullamcorper, sem quam pretium nulla, id
